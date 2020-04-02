@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './Menu';
 const Layout = ({
   title = 'Title',
-  decription = 'Description',
+  description = 'Description',
   className,
   children
 }) => (
@@ -10,7 +10,7 @@ const Layout = ({
     <Menu />
     <div className="jumbotron">
       <h2>{title}</h2>
-      <p className="lead">{decription}</p>
+      <p className="lead">{description}</p>
     </div>
     <div className={className}>{children}</div>
   </div>
