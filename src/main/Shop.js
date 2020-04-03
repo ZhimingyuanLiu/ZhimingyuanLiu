@@ -98,7 +98,7 @@ export default function Shop() {
       className="container-fluid"
     >
       <div className="row">
-        <div className="col-4">
+        <div className="col-2">
           <h4> List by categories</h4>
           <ul>
             <List
@@ -115,11 +115,13 @@ export default function Shop() {
             ></RadioBox>
           </div>
         </div>
-        <div className="col-8">
+        <div className="col-10">
           <h2 className="mb-4">Products</h2>
           <div className="row">
             {filterResults.map((product, i) => (
-              <Card key={i} product={product} />
+              <div key={i} className="col-4 mb-3">
+                <Card product={product} />
+              </div>
             ))}
           </div>
           {ButtonForMore()}
