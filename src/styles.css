@@ -23,14 +23,14 @@
   */
 
 .name {
-  background: indigo;
+  background: rgb(34, 105, 138);
   color: #fff;
   font-weight: bold;
 }
 
 /* black shade form 10-1 */
 .black-10 {
-  background: #f2f2f2;
+  background: rgb(194, 181, 181) 2;
 }
 .black-9 {
   background: #e6e6e6;
@@ -71,8 +71,15 @@
   */
 
 .jumbotron {
-  height: 180px;
+  height: 150px;
   color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+.bg-info {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;

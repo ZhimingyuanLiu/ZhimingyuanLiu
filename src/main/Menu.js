@@ -4,7 +4,7 @@ import { signout, isAuthenticated } from '../backEnd';
 import { itemTotal } from './cartUtils';
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: '#ff9900' };
+    return { color: '#ff9900', backgroundColor: 'lightblue' };
   } else {
     return { color: '#ffffff' };
   }
@@ -12,16 +12,20 @@ const isActive = (history, path) => {
 const Menu = ({ history }) => {
   return (
     <div>
-      <ul className="nav nav-tabs bg-primary">
+      <ul className="nav nav-tabs bg-info">
         <li className="nav-item">
-          <Link className="nav-link" style={isActive(history, '/')} to="/">
+          <Link
+            className="nav-link font-weight-bold"
+            style={isActive(history, '/')}
+            to="/"
+          >
             Home
           </Link>
         </li>
 
         <li className="nav-item">
           <Link
-            className="nav-link"
+            className="nav-link font-weight-bold"
             style={isActive(history, '/shop')}
             to="/shop"
           >
@@ -31,7 +35,7 @@ const Menu = ({ history }) => {
 
         <li className="nav-item">
           <Link
-            className="nav-link"
+            className="nav-link font-weight-bold"
             style={isActive(history, '/cart')}
             to="/cart"
           >
@@ -45,7 +49,7 @@ const Menu = ({ history }) => {
         {isAuthenticated() && isAuthenticated().user.role === 0 && (
           <li className="nav-item">
             <Link
-              className="nav-link"
+              className="nav-link font-weight-bold"
               style={isActive(history, '/user/dashboard')}
               to="/user/dashboard"
             >
@@ -56,7 +60,7 @@ const Menu = ({ history }) => {
         {isAuthenticated() && isAuthenticated().user.role === 1 && (
           <li className="nav-item">
             <Link
-              className="nav-link"
+              className="nav-link font-weight-bold"
               style={isActive(history, '/admin/dashboard')}
               to="/admin/dashboard"
             >
@@ -68,7 +72,7 @@ const Menu = ({ history }) => {
           <Fragment>
             <li className="nav-item">
               <Link
-                className="nav-link"
+                className="nav-link font-weight-bold"
                 style={isActive(history, '/signin')}
                 to="/signin"
               >
@@ -77,7 +81,7 @@ const Menu = ({ history }) => {
             </li>
             <li className="nav-item">
               <Link
-                className="nav-link"
+                className="nav-link font-weight-bold"
                 style={isActive(history, '/signup')}
                 to="/signup"
               >
@@ -89,7 +93,7 @@ const Menu = ({ history }) => {
         {isAuthenticated() && (
           <li className="nav-item">
             <span
-              className="nav-link"
+              className="nav-link font-weight-bold"
               style={{ cursor: 'pointer', color: '#ffffff' }}
               onClick={() =>
                 signout(() => {

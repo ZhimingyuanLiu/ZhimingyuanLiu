@@ -11,7 +11,6 @@ export default function List({ categories, hanldeFilters }) {
     } else {
       newCheckedCategoryId.splice(currentCategoryId, 1);
     }
-    // console.log(newCheckedCategoryId);
     setCheked(newCheckedCategoryId);
     hanldeFilters(newCheckedCategoryId);
   };

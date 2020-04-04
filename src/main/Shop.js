@@ -99,24 +99,31 @@ export default function Shop() {
     >
       <div className="row">
         <div className="col-2">
-          <h4> List by categories</h4>
-          <ul>
-            <List
-              categories={categories}
-              hanldeFilters={filters => hanldeFilters(filters, 'category')}
-            ></List>
-          </ul>
+          <h3>
+            <span class="badge badge-secondary">Categories</span>
+          </h3>
+          <div className="bg-light">
+            <ul>
+              <List
+                categories={categories}
+                hanldeFilters={filters => hanldeFilters(filters, 'category')}
+              ></List>
+            </ul>
+          </div>
+          <h3>
+            <span class="badge badge-secondary">Price</span>
+          </h3>
 
-          <h4> List by prices</h4>
-          <div>
-            <RadioBox
-              prices={prices}
-              hanldeFilters={filters => hanldeFilters(filters, 'price')}
-            ></RadioBox>
+          <div className="bg-light">
+            <div>
+              <RadioBox
+                prices={prices}
+                hanldeFilters={filters => hanldeFilters(filters, 'price')}
+              ></RadioBox>
+            </div>
           </div>
         </div>
         <div className="col-10">
-          <h2 className="mb-4">Products</h2>
           <div className="row">
             {filterResults.map((product, i) => (
               <div key={i} className="col-4 mb-3">
