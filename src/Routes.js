@@ -7,6 +7,7 @@ import AdminBoard from './user/AdminBoard';
 import Home from './main/Home';
 import PrivateRoutes from './backEnd/PrivateRoute';
 import AdminRoutes from './backEnd/AdminRoute';
+import UserRoute from './backEnd/UserRoute';
 import AddCategory from './admin/AddCategory';
 import AddProduct from './admin/AddProduct';
 import Shop from './main/Shop';

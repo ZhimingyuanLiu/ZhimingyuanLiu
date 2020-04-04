@@ -39,7 +39,7 @@ export default function Home() {
       <div className="row">
         {productBySell.map((product, i) => (
           <div key={i} className="col-4 mb-3">
-            <Card product={product} />
+            <Card product={product} showAddToCartButton={false} />
           </div>
         ))}
       </div>
@@ -47,7 +47,7 @@ export default function Home() {
       <div className="row">
         {productByArrival.map((product, i) => (
           <div key={i} className="col-4 mb-3">
-            <Card product={product} />
+            <Card product={product} showAddToCartButton={false} />
           </div>
         ))}
       </div>

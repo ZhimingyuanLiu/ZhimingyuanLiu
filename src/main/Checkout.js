@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { isAuthenticated } from '../backEnd';
-import Layout from './Layout';
-import { getProduct } from './apiMain';
-import Card from './Card';
-import Search from './Search';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { emptyCart } from './cartUtils';
-
 import StripeCheckout from 'react-stripe-checkout';
 
 export default function Checkout({

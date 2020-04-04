@@ -18,28 +18,34 @@ const Menu = ({ history }) => {
             Home
           </Link>
         </li>
-        <li className="nav-item">
-          <Link
-            className="nav-link"
-            style={isActive(history, '/shop')}
-            to="/shop"
-          >
-            Shop
-          </Link>
-        </li>
 
-        <li className="nav-item">
-          <Link
-            className="nav-link"
-            style={isActive(history, '/cart')}
-            to="/cart"
-          >
-            Cart
-            <sup>
-              <small className="badge badge-success ml-1">{itemTotal()}</small>
-            </sup>
-          </Link>
-        </li>
+        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              style={isActive(history, '/shop')}
+              to="/shop"
+            >
+              Shop
+            </Link>
+          </li>
+        )}
+        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              style={isActive(history, '/cart')}
+              to="/cart"
+            >
+              Cart
+              <sup>
+                <small className="badge badge-success ml-1">
+                  {itemTotal()}
+                </small>
+              </sup>
+            </Link>
+          </li>
+        )}
         {isAuthenticated() && isAuthenticated().user.role === 0 && (
           <li className="nav-item">
             <Link
