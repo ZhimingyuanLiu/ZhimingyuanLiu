@@ -5,13 +5,18 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { emptyCart } from './cartUtils';
+import { pay } from './apiMain';
 import StripeCheckout from 'react-stripe-checkout';
+import { API } from '../config';
 
 export default function Checkout({
   products,
-  setRun = f => f,
-  run = undefined
+  setRun = (f) => f,
+  run = undefined,
 }) {
+  const userId = isAuthenticated() && isAuthenticated().user._id;
+  const tokens = isAuthenticated() && isAuthenticated().token;
+
   const getTotal = () => {
     return products.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.price;
@@ -22,12 +27,9 @@ export default function Checkout({
   const price = getTotal();
 
   async function handleToken(token, address) {
-    const response = await axios.post(
-      'http://localhost:8000/api/stripe/getToken',
-      { token, price }
-    );
-    const { status } = response.data;
-    console.log('Response:', response.data);
+    const response = await pay(userId, tokens, token, price);
+    const status = response.status;
+    console.log(status);
     if (status === 'success') {
       toast('Success! Check email for details', { type: 'success' });
       emptyCart(() => {

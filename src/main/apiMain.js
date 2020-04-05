@@ -1,11 +1,11 @@
 import { API } from '../config';
 import queryString from 'query-string';
-export const getProduct = async sortBy => {
+export const getProduct = async (sortBy) => {
   try {
     const response = await fetch(
       `${API}/products?sortBy=${sortBy}&order=desc&limit=6`,
       {
-        method: 'GET'
+        method: 'GET',
       }
     );
     return response.json();
@@ -17,7 +17,7 @@ export const getProduct = async sortBy => {
 export const getCategories = async () => {
   try {
     const response = await fetch(`${API}/categories`, {
-      method: 'GET'
+      method: 'GET',
     });
     return response.json();
   } catch (err) {
@@ -29,16 +29,16 @@ export const getFilteredProducts = async (skip, limit, filters = {}) => {
   const data = {
     limit,
     skip,
-    filters
+    filters,
   };
   try {
     const response = await fetch(`${API}/products/by/search`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
     return response.json();
   } catch (err) {
@@ -46,12 +46,12 @@ export const getFilteredProducts = async (skip, limit, filters = {}) => {
   }
 };
 
-export const list = async params => {
+export const list = async (params) => {
   try {
     const query = queryString.stringify(params);
     console.log('query', query);
     const response = await fetch(`${API}/products/search?${query}`, {
-      method: 'GET'
+      method: 'GET',
     });
     return response.json();
   } catch (err) {
@@ -59,10 +59,10 @@ export const list = async params => {
   }
 };
 
-export const getOneProduct = async productId => {
+export const getOneProduct = async (productId) => {
   try {
     const response = await fetch(`${API}/product/${productId}`, {
-      method: 'GET'
+      method: 'GET',
     });
     return response.json();
   } catch (err) {
@@ -70,11 +70,29 @@ export const getOneProduct = async productId => {
   }
 };
 
-export const getRelated = async productId => {
+export const getRelated = async (productId) => {
   try {
     const response = await fetch(`${API}/products/related/${productId}`, {
-      method: 'GET'
+      method: 'GET',
     });
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const pay = async (userId, tokens, token, price) => {
+  try {
+    const response = await fetch(`${API}/stripe/getToken/${userId}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokens}`,
+      },
+      body: JSON.stringify({ token, price }),
+    });
+    //console.log(response);
     return response.json();
   } catch (err) {
     console.log(err);
