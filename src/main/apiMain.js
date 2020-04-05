@@ -92,7 +92,6 @@ export const pay = async (userId, tokens, token, price) => {
       },
       body: JSON.stringify({ token, price }),
     });
-    //console.log(response);
     return response.json();
   } catch (err) {
     console.log(err);
