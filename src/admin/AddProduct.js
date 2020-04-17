@@ -203,7 +203,6 @@ export default function AddProduct() {
     >
       <div className="row">
         <div className="col-md-8 offset-md-2">
-          {name}
           {showLoading()}
           {showSuccess()}
           {showError()}

@@ -10,8 +10,8 @@ export default function Shop() {
   const [custFilters, setCustFilters] = useState({
     filters: {
       category: [],
-      price: []
-    }
+      price: [],
+    },
   });
   const [categories, setcategories] = useState([]);
   const [error, setError] = useState(false);
@@ -20,7 +20,7 @@ export default function Shop() {
   const [size, setSize] = useState(0);
   const [filterResults, setFilterResults] = useState([]);
   const init = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -29,8 +29,8 @@ export default function Shop() {
     });
   };
 
-  const loadFilterResult = newFilters => {
-    getFilteredProducts(skip, limit, newFilters).then(data => {
+  const loadFilterResult = (newFilters) => {
+    getFilteredProducts(skip, limit, newFilters).then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -43,7 +43,7 @@ export default function Shop() {
 
   const loadMore = () => {
     let toSkip = skip + limit;
-    getFilteredProducts(toSkip, limit, custFilters.filters).then(data => {
+    getFilteredProducts(toSkip, limit, custFilters.filters).then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -81,7 +81,7 @@ export default function Shop() {
     setCustFilters(newFilters);
   };
 
-  const handlePrice = value => {
+  const handlePrice = (value) => {
     const data = prices;
     let array = [];
     for (let key in data) {
@@ -94,31 +94,31 @@ export default function Shop() {
   return (
     <Layout
       title="Shop Page"
-      decription="Find you favorite"
+      description="Find you favorite Pokémon"
       className="container-fluid"
     >
       <div className="row">
         <div className="col-2">
           <h3>
-            <span class="badge badge-secondary">Categories</span>
+            <span className="badge badge-secondary">Categories</span>
           </h3>
           <div className="bg-light">
             <ul>
               <List
                 categories={categories}
-                hanldeFilters={filters => hanldeFilters(filters, 'category')}
+                hanldeFilters={(filters) => hanldeFilters(filters, 'category')}
               ></List>
             </ul>
           </div>
           <h3>
-            <span class="badge badge-secondary">Price</span>
+            <span className="badge badge-secondary">Price</span>
           </h3>
 
           <div className="bg-light">
             <div>
               <RadioBox
                 prices={prices}
-                hanldeFilters={filters => hanldeFilters(filters, 'price')}
+                hanldeFilters={(filters) => hanldeFilters(filters, 'price')}
               ></RadioBox>
             </div>
           </div>

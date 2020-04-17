@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { isAuthenticated } from '../backEnd';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { emptyCart } from './cartUtils';
-import { pay } from './apiMain';
+import { pay, creatOrder } from './apiMain';
 import StripeCheckout from 'react-stripe-checkout';
 import { API } from '../config';
 
@@ -28,9 +27,24 @@ export default function Checkout({
 
   async function handleToken(token, address) {
     const response = await pay(userId, tokens, token, price);
+
     const status = response.status;
-    console.log(status);
+
     if (status === 'success') {
+      const createOrderData = {
+        products: products,
+        transaction_id: response.charge.id,
+        amount: response.charge.amount / 100,
+        address:
+          response.charge.billing_details.address.line1 +
+          ',' +
+          response.charge.billing_details.address.city +
+          ',' +
+          response.charge.billing_details.address.country +
+          ',' +
+          response.charge.billing_details.address.postal_code,
+      };
+      await creatOrder(userId, tokens, createOrderData);
       toast('Success! Check email for details', { type: 'success' });
       emptyCart(() => {
         setRun(!run);

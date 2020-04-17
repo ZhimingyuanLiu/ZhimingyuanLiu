@@ -23,7 +23,7 @@
   */
 
 .name {
-  background: rgb(34, 105, 138);
+  /* background: rgb(34, 105, 138); */
   color: #fff;
   font-weight: bold;
 }
@@ -73,14 +73,14 @@
 .jumbotron {
   height: 150px;
   color: #fff;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #04bae7, #55524e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;
 }
 .bg-info {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #04bae7, #55524e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;

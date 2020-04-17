@@ -3,7 +3,7 @@ import queryString from 'query-string';
 export const getProduct = async (sortBy) => {
   try {
     const response = await fetch(
-      `${API}/products?sortBy=${sortBy}&order=desc&limit=6`,
+      `${API}/products?sortBy=${sortBy}&order=desc&limit=8`,
       {
         method: 'GET',
       }
@@ -91,6 +91,23 @@ export const pay = async (userId, tokens, token, price) => {
         Authorization: `Bearer ${tokens}`,
       },
       body: JSON.stringify({ token, price }),
+    });
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const creatOrder = async (userId, tokens, createdOrder) => {
+  try {
+    const response = await fetch(`${API}/order/create/${userId}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokens}`,
+      },
+      body: JSON.stringify({ order: createdOrder }),
     });
     return response.json();
   } catch (err) {

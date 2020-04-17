@@ -9,12 +9,12 @@ export default function Card({
   showAddToCartButton = true,
   cartUpdate = false,
   showRemove = false,
-  setRun = f => f,
-  run = undefined
+  setRun = (f) => f,
+  run = undefined,
 }) {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
-  const showViewButton = showViewProductButton => {
+  const showViewButton = (showViewProductButton) => {
     return (
       showViewProductButton && (
         <Link to={`/product/${product._id}`} className="mr-2">
@@ -25,14 +25,14 @@ export default function Card({
       )
     );
   };
-  const showStock = quantity => {
+  const showStock = (quantity) => {
     return quantity > 0 ? (
       <span className="badge badge-primary badge-pill">Availible</span>
     ) : (
       <span className="badge badge-danger badge-pill">Not Availible</span>
     );
   };
-  const remove = showRemove => {
+  const remove = (showRemove) => {
     return (
       showRemove && (
         <button
@@ -47,7 +47,7 @@ export default function Card({
       )
     );
   };
-  const showCardUpdate = cartUpdate => {
+  const showCardUpdate = (cartUpdate) => {
     return (
       cartUpdate && (
         <div>
@@ -71,12 +71,12 @@ export default function Card({
     addItem(product, setRedirect(true));
   };
 
-  const redirectNow = redirect => {
+  const redirectNow = (redirect) => {
     if (redirect) {
       return <Redirect to="/cart"></Redirect>;
     }
   };
-  const showAddButton = showAddToCartButton => {
+  const showAddButton = (showAddToCartButton) => {
     return (
       showAddToCartButton && (
         <button
@@ -89,7 +89,7 @@ export default function Card({
     );
   };
 
-  const handleChange = productId => event => {
+  const handleChange = (productId) => (event) => {
     setRun(!run); // run useEffect in parent Cart
     setCount(event.target.value < 1 ? 1 : event.target.value);
     if (event.target.value >= 1) {
@@ -98,7 +98,7 @@ export default function Card({
   };
   return (
     <div className="card">
-      <div className="card-header name">{product.name}</div>
+      <div className="card-header bg-info name">{product.name}</div>
       <div className="card-body">
         {redirectNow(redirect)}
         <ShowImage item={product} url="product"></ShowImage>

@@ -33,12 +33,16 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout title="Home Page" decription="Testing" className="container-fluid">
+    <Layout
+      title="Home Page"
+      description="Please take a look at out Pokémons"
+      className="container-fluid"
+    >
       <Search />
       <h2 className="mb-4">Best Sellers</h2>
       <div className="row">
         {productBySell.map((product, i) => (
-          <div key={i} className="col-4 mb-3">
+          <div key={i} className="col-3 mb-3">
             <Card product={product} showAddToCartButton={false} />
           </div>
         ))}
@@ -46,7 +50,7 @@ export default function Home() {
       <h2 className="mb-4">New Coming</h2>
       <div className="row">
         {productByArrival.map((product, i) => (
-          <div key={i} className="col-4 mb-3">
+          <div key={i} className="col-3 mb-3">
             <Card product={product} showAddToCartButton={false} />
           </div>
         ))}
